@@ -1,2 +1,1 @@
-docker build --force-rm -t ykh-fe .
-
+docker build --force-rm -t ykh-fe-vue .

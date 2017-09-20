@@ -12,6 +12,7 @@ RUN yum -y --setopt=tsflags=nodocs update && \
 
 COPY ./httpd.conf /etc/httpd/conf/httpd.conf
 COPY ./bstfe/ /var/www/html/bstfe/
+COPY ./gfwkpfe/ /var/www/html/gfwkpfe/
 
 EXPOSE 80
 
