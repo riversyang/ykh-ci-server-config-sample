@@ -2,7 +2,7 @@
 
 This is a project for setting up CI server of YunKuHui microservices with CentOS.
 
-#### Install docker
+### Install docker
 
 Follow the official instruction in https://docs.docker.com/engine/installation/linux/docker-ce/centos/ to install Docker CE.
 
@@ -12,7 +12,7 @@ After installation, remember to enable docker as system service.
 systemctl enable docker
 ```
 
-#### Install nodejs and npm
+### Install nodejs and npm
 
 To install nodejs and npm, you can just use following command.
 
@@ -20,17 +20,23 @@ To install nodejs and npm, you can just use following command.
 yum install nodejs npm --enablerepo=epel
 ```
 
-#### Install Maven
+### Install Maven
 
 ```shell
 yum install maven
 ```
 
-#### Install MongoDB
+### Install MongoDB
 
 Follow the official instruction in https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/ to install MongoDB.
 
-#### Setup Jenkins
+### Install Java
+
+```shell
+yum install java-1.8.0-openjdk
+```
+
+### Setup Jenkins
 
 Download jenkins.war from offcial site, and put it in [/home/jenkins]. Create a service setting file [/etc/systemd/system/jenkins.service] with the following contents.
 
