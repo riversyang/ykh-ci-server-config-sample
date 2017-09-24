@@ -1,5 +1,3 @@
 ./stop.sh
-cd aaa
-npm install
-cd ..
+npm install --cache-min Infinity
 docker build --force-rm -t ykh-aaa-service .

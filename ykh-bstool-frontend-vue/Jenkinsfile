@@ -1,0 +1,19 @@
+pipeline {
+    agent any 
+
+    stages {
+        stage('Build') { 
+            steps { 
+            	sh 'chmod -v +x ./build.sh'
+            	sh 'chmod -v +x ./run.sh'
+            	sh 'chmod -v +x ./stop.sh'
+                sh './build.sh' 
+            }
+        }
+        stage('Run'){
+            steps {
+                sh './run.sh'
+            }
+        }
+    }
+}
