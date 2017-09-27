@@ -2,7 +2,48 @@
 
 This is a project for setting up CI server of YunKuHui microservices with CentOS.
 
-### Install docker
+### Install vsftpd
+
+```shell
+yum install vsftpd
+```
+
+```shell
+adduser ftpuser
+passwd ftpuser
+```
+
+Then you should modify [/etc/vsftpd/vsftpd.conf], make the following changes.
+
+```
+...
+anonymous_enable=NO
+...
+ascii_upload_enable=YES
+ascii_download_enable=YES
+...
+#chroot_local_user=YES
+chroot_list_enable=YES
+chroot_list_file=/etc/vsftpd/chroot_list
+...
+(Add the following setting to the end of the file)
+allow_writeable_chroot=YES
+```
+
+Add file [/etc/vsftpd/chroot_list] with the following contents.
+
+```
+ftpuser
+```
+
+And enable it as system service, start it.
+
+```shell
+systemctl enable vsftpd
+systemctl start vsftpd
+```
+
+### Install Docker
 
 Follow the official instruction in https://docs.docker.com/engine/installation/linux/docker-ce/centos/ to install Docker CE.
 
@@ -18,6 +59,12 @@ To install nodejs and npm, you can just use following command.
 
 ```Shell
 yum install nodejs npm --enablerepo=epel
+```
+
+### Install Git
+
+```shell
+yum install git
 ```
 
 ### Install Maven
@@ -40,7 +87,7 @@ yum install java-1.8.0-openjdk
 
 Download jenkins.war from offcial site, and put it in [/home/jenkins]. Create a service setting file [/etc/systemd/system/jenkins.service] with the following contents.
 
-```shell
+```
 [Unit]
 Description=jenkins
 After=network.target
@@ -61,5 +108,6 @@ Reload systemctl config and enable it as startup service.
 ```shell
 systemctl daemon-reload
 systemctl enable jenkins
+systemctl start jenkins
 ```
 
