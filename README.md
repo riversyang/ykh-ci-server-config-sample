@@ -55,10 +55,11 @@ systemctl enable docker
 
 ### Install nodejs and npm
 
-To install nodejs and npm, you can just use following command.
+To install nodejs and npm, you can just use following command. You may also need to install cnpm while you are in China.
 
 ```Shell
 yum install nodejs npm --enablerepo=epel
+npm install cnpm -g --registry=https://registry.npm.taobao.org
 ```
 
 ### Install Git
