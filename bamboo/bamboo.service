@@ -1,0 +1,13 @@
+[Unit]
+Description=bamboo
+After=network.target syslog.target remote-fs.target nss-lookup.target
+[Service]
+Type=forking
+ExecStart=/home/bamboo/atlassian-bamboo-6.2.2/bin/startup.sh
+Restart=no
+User=root
+Group=root
+Environment=BAMBOO_HOME=/opt/bamboo/bamboo-home
+Environment=JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+[Install]
+WantedBy=multi-user.target
