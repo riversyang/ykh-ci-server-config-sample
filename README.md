@@ -53,6 +53,13 @@ After installation, remember to enable docker as system service.
 systemctl enable docker
 ```
 
+Create network for deployment.
+
+```Shell
+docker network create -d bridge --subnet 172.25.0.0/16 backend-nw
+docker network create -d bridge --subnet 172.26.0.0/16 frontend-nw
+```
+
 ### Install nodejs and npm
 
 To install nodejs and npm, you can just use following command. You may also need to install cnpm while you are in China.
